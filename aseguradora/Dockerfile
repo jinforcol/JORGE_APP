@@ -3,10 +3,7 @@ FROM maven:3.9-eclipse-temurin-17 AS builder
 
 WORKDIR /app
 
-# Copiar archivos de configuración de Maven
-COPY mvnw mvnw
-COPY mvnw.cmd mvnw.cmd
-COPY .mvn .mvn
+# Copiar archivo de configuracion de Maven
 COPY pom.xml pom.xml
 
 # Copiar código fuente

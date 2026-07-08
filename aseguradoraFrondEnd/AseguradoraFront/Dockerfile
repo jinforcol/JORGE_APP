@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar dependencias
-RUN npm ci
+RUN npm install
 
 # Copiar código fuente
 COPY . .
@@ -22,7 +22,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar archivos compilados del stage anterior
-COPY --from=builder /app/dist/aseguradora-front /usr/share/nginx/html
+COPY --from=builder /app/dist/AseguradoraFront/browser /usr/share/nginx/html
 
 # Exponer puerto
 EXPOSE 80

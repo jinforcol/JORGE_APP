@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./aseguradora
+      dockerfile: Dockerfile
+    container_name: jorge_app_backend
+    ports:
+      - "9090:9090"
+
+  frontend:
+    build:
+      context: ./aseguradoraFrondEnd/AseguradoraFront
+      dockerfile: Dockerfile
+    container_name: jorge_app_frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
