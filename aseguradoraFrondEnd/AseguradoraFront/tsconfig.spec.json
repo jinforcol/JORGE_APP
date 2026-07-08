@@ -4,6 +4,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    //comentar root Dir para que no de error al ejecutar vitest
+    "rootDir": "./src",
     "types": [
       "vitest/globals"
     ]

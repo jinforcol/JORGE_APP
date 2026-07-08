@@ -4,6 +4,8 @@ services:
       context: ./aseguradora
       dockerfile: Dockerfile
     container_name: jorge_app_backend
+    environment:
+      SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS: "true"
     ports:
       - "9090:9090"
 
