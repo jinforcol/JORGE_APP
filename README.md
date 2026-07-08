@@ -25,9 +25,20 @@ cd JORGE_APP
 
 ### 2️⃣ Ejecutar Docker Compose
 
-```bash
-docker-compose up --build
-```
+# Primera vez:
+
+docker compose up --build -d
+Después de eso, para levantarlo sin reconstruir 
+
+# Luego cada vez que quieras subir:
+docker compose up -d
+
+# Si solo quieres detenerlo sin borrarlo:
+docker compose stop
+
+# Si quieres “bajar” pero conservar los contenedores:
+docker compose down (esto borra contenedores y redes, pero no las imágenes)
+
 
 Espera a que salga algo como:
 ```
