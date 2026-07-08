@@ -43,19 +43,5 @@ public class PolicyController  {
         return repo.findById(id).orElse(null);
     }
 
-    @PutMapping("/policies/{id}")
-    public Policy updatePolicy(@PathVariable Long id, @RequestBody Policy updatedPolicy) {      
-        return repo.findById(id)
-                .map(policy -> {
-                    policy.setPolicyNumber(updatedPolicy.getPolicyNumber());
-                    policy.setStartDate(updatedPolicy.getStartDate());
-                    policy.setEndDate(updatedPolicy.getEndDate());
-                    policy.setPremiumAmount(updatedPolicy.getPremiumAmount());
-                    return repo.save(policy);
-                })
-                .orElse(null);
-    }   
-
     
-
 }
