@@ -26,7 +26,7 @@ cd JORGE_APP
 ### 2️⃣ Ejecutar Docker Compose
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 Espera a que salga algo como:
