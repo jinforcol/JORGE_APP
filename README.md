@@ -6,10 +6,12 @@ Tus compañeros necesitan tener instalado:
 - **Docker Desktop**: [Descargar aquí](https://www.docker.com/products/docker-desktop)
   - ✅ Incluye Docker y Docker Compose
 
+Además, para este proyecto no es necesario instalar Node.js, npm o Java en la máquina local si van a trabajar con Docker.
+
 Verifica que funcionan:
 ```bash
 docker --version
-docker-compose --version
+docker compose version
 ```
 
 ---
@@ -23,33 +25,51 @@ git clone https://github.com/tu-usuario/JORGE_APP.git
 cd JORGE_APP
 ```
 
-### 2️⃣ Ejecutar Docker Compose
+### 2️⃣ Ejecutar Docker Compose para desarrollo
 
+Para trabajar en frontend y backend sin instalar Node.js en tu máquina, usa el flujo de desarrollo con Docker:
+
+```bash
 # Primera vez:
+docker compose up --build -d backend frontend-dev
 
-docker compose up --build -d
-Después de eso, para levantarlo sin reconstruir 
-
-# Luego cada vez que quieras subir:
-docker compose up -d
-
-# Si solo quieres detenerlo sin borrarlo:
-docker compose stop
-
-# Si quieres “bajar” pero conservar los contenedores:
-docker compose down (esto borra contenedores y redes, pero no las imágenes)
-
-
-Espera a que salga algo como:
+# Luego cada vez que quieras levantarlo de nuevo:
+docker compose up -d backend frontend-dev
 ```
-✓ backend está listo en http://localhost:9090
-✓ frontend está listo en http://localhost
+
+Si solo quieres levantar la versión de producción del frontend:
+
+```bash
+docker compose up -d backend frontend
+```
+
+Si quieres detener los contenedores sin borrarlos:
+
+```bash
+docker compose stop
+```
+
+Si quieres detenerlos y remover redes/containers:
+
+```bash
+docker compose down
+```
+
+Espera a que los servicios queden listos. En desarrollo:
+
+```text
+✓ backend listo en http://localhost:9090
+✓ frontend de desarrollo listo en http://localhost:4200
 ```
 
 ### 3️⃣ Acceder a la aplicación
 
-- **Frontend** (Angular): http://localhost
+Para desarrollo full-stack:
+- **Frontend** (Angular en desarrollo): http://localhost:4200
 - **Backend** (Spring Boot): http://localhost:9090
+
+Para la versión de producción del frontend:
+- **Frontend** (Nginx): http://localhost
 
 ¡Listo! ✅
 
@@ -100,18 +120,18 @@ docker ps
 
 ### Acceder a un contenedor
 ```bash
-docker-compose exec backend bash
-docker-compose exec frontend sh
+docker compose exec backend sh
+docker compose exec frontend-dev sh
 ```
 
-### Desarrollo frontend con Angular CLI desde Docker
-Si no quieren instalar Node.js en su máquina, pueden usar el servicio de desarrollo del frontend:
+### Desarrollo frontend y backend con Docker
+Si no quieren instalar Node.js en su máquina, este es el flujo recomendado:
 
 ```bash
-docker compose up --build frontend-dev
+docker compose up --build -d backend frontend-dev
 ```
 
-Luego, para generar código Angular dentro del contenedor:
+Luego, para trabajar dentro del contenedor del frontend:
 
 ```bash
 docker compose exec frontend-dev sh
