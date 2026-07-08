@@ -104,6 +104,37 @@ docker-compose exec backend bash
 docker-compose exec frontend sh
 ```
 
+### Desarrollo frontend con Angular CLI desde Docker
+Si no quieren instalar Node.js en su máquina, pueden usar el servicio de desarrollo del frontend:
+
+```bash
+docker compose up --build frontend-dev
+```
+
+Luego, para generar código Angular dentro del contenedor:
+
+```bash
+docker compose exec frontend-dev sh
+```
+
+Dentro del contenedor ejecutar:
+
+```bash
+ng g s services/policy
+# o
+ng g c component/policy
+# o
+ng g interface models/policy
+```
+
+También se puede generar directamente sin entrar al contenedor:
+
+```bash
+docker compose run --rm frontend-dev sh -lc "ng g s services/policy"
+```
+
+El servicio `frontend-dev` monta la carpeta del proyecto en `/app` y permite trabajar con Angular CLI sin instalar dependencias locales.
+
 ---
 
 ## 🏗️ Arquitectura
