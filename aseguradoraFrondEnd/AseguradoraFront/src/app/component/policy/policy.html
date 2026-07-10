@@ -1,2 +1,46 @@
-//tabla para mostrar las polizas
-<h1>table</h1>
+<section class="policy-page">
+    <form class="policy-card" (ngSubmit)="calculatePremium()">
+        <div class="policy-header">
+            <span class="policy-icon" aria-hidden="true">$</span>
+            <div>
+                <h2>Cotizador de poliza</h2>
+                <p>Calcula la prima segun el valor asegurado, edad y cobertura.</p>
+            </div>
+        </div>
+
+        <div class="field-grid">
+            <label for="insuredAmount">
+                Valor asegurado
+                <input id="insuredAmount" name="insuredAmount" type="number" [(ngModel)]="insuredAmount" min="0"
+                    placeholder="Ejemplo: 50000000">
+            </label>
+
+            <label for="age">
+                Edad del asegurado
+                <input id="age" name="age" type="number" [(ngModel)]="age" min="18" placeholder="Ejemplo: 30">
+            </label>
+        </div>
+
+        <label for="coverageType" class="coverage-field">
+            Tipo de cobertura
+            <select id="coverageType" name="coverageType" [(ngModel)]="coverageType">
+                <option value="basic">Basica</option>
+                <option value="standard">Estandar</option>
+                <option value="premium">Premium</option>
+            </select>
+        </label>
+
+        <button type="submit" class="calculate-button">Calcular prima</button>
+
+        <div class="result-panel">
+            <span>Prima calculada</span>
+            <strong>{{ calculatedPremium }}</strong>
+        </div>
+
+        @if (errorMessage) {
+        <p class="error-message">
+            {{ errorMessage }}
+        </p>
+        }
+    </form>
+</section>

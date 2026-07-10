@@ -1,7 +1,45 @@
-<p>calculadora works!</p>
+<main class="calculator-page">
+  <section class="calculator-card" aria-labelledby="calculator-title">
+    <div class="calculator-header">
+      <span class="calculator-icon">+</span>
+      <div>
+        <h2 id="calculator-title">Calculadora aritmetica</h2>
+        <p>Ingresa dos numeros y elige una operacion.</p>
+      </div>
+    </div>
 
+    <div class="input-grid">
+      <label>
+        Numero 1
+        <input
+          [(ngModel)]="num1"
+          type="number"
+          placeholder="0"
+        >
+      </label>
 
-<input [(ngModel)]="num1" type="number" placeholder="Número 1">
-<input [(ngModel)]="num2" type="number" placeholder="Número 2">
-<button (click)="sumar()">Sumar</button>
-<p>Resultado: {{ resultado }}</p>
+      <label>
+        Numero 2
+        <input
+          [(ngModel)]="num2"
+          type="number"
+          placeholder="0"
+        >
+      </label>
+    </div>
+
+    <div class="actions" aria-label="Operaciones">
+      <button class="operation addition" type="button" (click)="sumar()">Sumar</button>
+      <button class="operation subtraction" type="button" (click)="restar()">Restar</button>
+      <button class="operation multiplication" type="button" (click)="multiplicar()">Multiplicar</button>
+      <button class="operation division" type="button" (click)="dividir()">Dividir</button>
+    </div>
+
+    <div class="result-panel">
+      <span>Resultado</span>
+      <strong>{{ resultado }}</strong>
+    </div>
+
+    <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+  </section>
+</main>

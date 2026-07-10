@@ -1,6 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -11,7 +9,4 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('AseguradoraFront');
-  
-  //agregar el modulo de HttpClientModule para poder hacer peticiones HTTP
-  constructor(private http: HttpClient) {}
 }
